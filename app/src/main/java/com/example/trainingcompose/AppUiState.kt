@@ -1,5 +1,7 @@
 package com.example.trainingcompose
 
+import androidx.compose.ui.text.input.TextFieldValue
+
 data class AppUiState(
-    val price: Int = 0,
+    val price: TextFieldValue = TextFieldValue("0"),
 )

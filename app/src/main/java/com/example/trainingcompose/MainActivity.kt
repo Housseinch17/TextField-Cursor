@@ -25,7 +25,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -50,7 +52,7 @@ class MainActivity : ComponentActivity() {
                         .padding(horizontal = 20.dp),
                     list = list,
                     updatePrice = appViewModel::updatePrice,
-                    price = appUiState.price
+                    textFieldValue = appUiState.price
                 )
             }
         }
@@ -58,41 +60,43 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Screen(modifier: Modifier, list: List<Int>, updatePrice: (Int) -> Unit, price: Int) {
+fun Screen(modifier: Modifier, list: List<String>, updatePrice: (TextFieldValue) -> Unit, textFieldValue: TextFieldValue) {
     Column(modifier = modifier, verticalArrangement = Arrangement.Center) {
         TextField(
-            value = "$price",
+            value = textFieldValue,
             onValueChange = {
-                updatePrice(it.toInt())
+                updatePrice(it)
             },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 10.dp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-
         )
         TextButtonsList(modifier = Modifier.fillMaxWidth(), list = list) {
-            updatePrice(it)
+            updatePrice(textFieldValue.copy(
+                text = it.text,
+                selection = TextRange(it.text.length)
+            ))
         }
     }
 }
 
 @Composable
-fun TextButtonsList(modifier: Modifier, list: List<Int>, updatePrice: (Int) -> Unit) {
+fun TextButtonsList(modifier: Modifier, list: List<String>, updatePrice: (TextFieldValue) -> Unit) {
     LazyRow(
         modifier = modifier,
         contentPadding = PaddingValues(horizontal = 10.dp),
     ) {
         items(list) { item ->
             TextButtons(price = item) {
-                updatePrice(item)
+                updatePrice(TextFieldValue(item))
             }
         }
     }
 }
 
 @Composable
-fun TextButtons(price: Int, updatePrice: (Int) -> Unit) {
+fun TextButtons(price: String, updatePrice: (String) -> Unit) {
     Button(
         onClick = {
             updatePrice(price)
@@ -101,6 +105,6 @@ fun TextButtons(price: Int, updatePrice: (Int) -> Unit) {
         colors = ButtonDefaults.buttonColors(Color.Black)
 
     ) {
-        Text(text = "$price", style = MaterialTheme.typography.bodyMedium, color = Color.White)
+        Text(text = price, style = MaterialTheme.typography.bodyMedium, color = Color.White)
     }
 }
