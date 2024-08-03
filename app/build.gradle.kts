@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.trainingcompose"
+    namespace = "com.example.textfieldvalue"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.trainingcompose"
+        applicationId = "com.example.textfieldvalue"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

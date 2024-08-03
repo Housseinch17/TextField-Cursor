@@ -1,4 +1,4 @@
-package com.example.trainingcompose
+package com.example.textfieldvalue
 
 import android.os.Build
 import android.os.Bundle
@@ -31,7 +31,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.trainingcompose.ui.theme.TrainingComposeTheme
+import com.example.textfieldvalue.ui.theme.TrainingComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

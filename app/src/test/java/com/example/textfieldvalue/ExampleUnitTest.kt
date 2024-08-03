@@ -1,4 +1,4 @@
-package com.example.trainingcompose
+package com.example.textfieldvalue
 
 import org.junit.Test
 

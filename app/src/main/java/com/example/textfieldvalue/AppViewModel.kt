@@ -1,4 +1,4 @@
-package com.example.trainingcompose
+package com.example.textfieldvalue
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.text.input.TextFieldValue

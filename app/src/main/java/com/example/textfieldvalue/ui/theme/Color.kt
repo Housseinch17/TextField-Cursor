@@ -1,4 +1,4 @@
-package com.example.trainingcompose.ui.theme
+package com.example.textfieldvalue.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

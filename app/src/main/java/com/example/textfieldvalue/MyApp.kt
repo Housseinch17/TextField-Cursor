@@ -1,4 +1,4 @@
-package com.example.trainingcompose
+package com.example.textfieldvalue
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -1,4 +1,4 @@
-package com.example.trainingcompose
+package com.example.textfieldvalue
 
 object DataSource {
     val list: List<String> = listOf(
